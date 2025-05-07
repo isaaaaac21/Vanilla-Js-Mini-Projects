@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Start Variables */
+
+:root {
+  --primary-color: #f59e0b;
+  --secondary-color: #fffbeb;
+  --accent-color: #fb923c;
+  --text-color: #292524;
+  --background-color: #ffffff;
+  --transparent-color: rgb(15 116 143 / 70%);
+  --padding: 100px;
+}
+
+/* End Variables */
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Start SideBar */
+aside {
+  position: absolute;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+  border-right: 2px solid var(--accent-color);
+  transition: 0.3s;
+  width: 70px;
+  overflow: hidden;
+  z-index: 120000;
+}
+aside:hover {
+  width: 200px;
+}
+
+aside h2 {
+  color: var(--primary-color);
+  text-align: center;
+}
+
+aside nav ul a {
+  background-color: var(--secondary-color);
+  text-decoration: none;
+  transition: 0.3s;
+  display: table;
+  width: 300px;
+
+  border-bottom: 1px solid #eee;
+}
+aside nav ul a:hover {
+  color: var(--accent-color);
+  background-color: #f1f1f165;
+}
+aside nav ul a i {
+  position: relative;
+  width: 75px;
+  height: 14px;
+}
+aside nav ul a span {
+  position: relative;
+  margin-left: -5px;
+}
+/* End SideBar */
+main {
+  flex: 1;
+}
+/* Start section mouse effect */
+
+section.mouseeffect {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: 70px;
+  min-height: 100vh;
+}
+section.mouseeffect span {
+  background: url("../images/bubble1.png");
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-size: cover;
+}
+/* End section mouse effect */
