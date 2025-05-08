@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 * {
   box-sizing: border-box;
@@ -25,6 +26,8 @@ html {
 /* End Variables */
 body {
   font-family: "Work Sans", sans-serif;
+  height: 5000px;
+  overflow-x: hidden;
 }
 
 ul {
@@ -75,21 +78,46 @@ aside nav ul a span {
 }
 /* End SideBar */
 main {
-  flex: 1;
+  flex-basis: calc(100% - 70px);
+  margin-left: 70px;
 }
 /* Start section mouse effect */
 
-section.mouseeffect {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-left: 70px;
+section.mouse-effect {
   min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
-section.mouseeffect span {
-  background: url("../images/bubble1.png");
-  width: 100px;
-  height: 100px;
+section.mouse-effect i {
   position: absolute;
-  background-size: cover;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  color: white;
+  animation: bubleToTop 5s;
 }
 /* End section mouse effect */
+
+section.type-effect {
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+section.type-effect h2 {
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: "Permanent Marker", cursive;
+}
+/* Start section Type Effect */
+/* End section Type Effect */
+@keyframes bubleToTop {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 5000%);
+    opacity: 0;
+  }
+}
