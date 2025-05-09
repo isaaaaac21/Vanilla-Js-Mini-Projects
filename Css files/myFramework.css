@@ -106,6 +106,9 @@
 .mb-20 {
   margin-bottom: 20px;
 }
+.mb-25 {
+  margin-bottom: 25px;
+}
 .mb-30 {
   margin-bottom: 30px;
 }
@@ -214,6 +217,9 @@
 .c-grey {
   color: var(--grey-color);
 }
+.c-aaa {
+  color: #aaa;
+}
 .c-white {
   color: white;
 }
@@ -287,6 +293,9 @@
 }
 .fs-35 {
   font-size: 35px;
+}
+.fs-50 {
+  font-size: 50px;
 }
 .fw-bold {
   font-weight: bold;

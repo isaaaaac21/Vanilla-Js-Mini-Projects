@@ -36,7 +36,7 @@ ul {
 
 /* Start SideBar */
 aside {
-  position: absolute;
+  position: fixed;
   height: 100%;
   background-color: var(--secondary-color);
   border-right: 2px solid var(--accent-color);
@@ -125,6 +125,64 @@ section.type-effect h2 {
 }
 /* End section Type Effect */
 
+/* Start Calendar Section */
+section.calendar {
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: slateblue;
+  font-family: cursive;
+}
+section.calendar .cal-box {
+  min-width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 767px) {
+  section.calendar .cal-box {
+    min-width: 200px;
+  }
+}
+section.calendar .cal-box .month-head {
+  background-color: tomato;
+}
+
+section.calendar .cal-box .cal-body .animate {
+  animation: changeCol 0.5s ease;
+}
+
+section.calendar .cal-box .cal-body .date-before,
+section.calendar .cal-box .cal-body .date-after {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  border: 7px solid;
+  border-color: transparent transparent tomato tomato;
+  transform-origin: center;
+  transform: rotate(45deg) translateY(-20px);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+section.calendar .cal-box .cal-body .date-before:hover {
+  border-color: transparent transparent rgb(199, 75, 54) rgb(199, 75, 54);
+}
+section.calendar .cal-box .cal-body .date-after:hover {
+  border-color: rgb(199, 75, 54) rgb(199, 75, 54) transparent transparent;
+}
+section.calendar .cal-box .cal-body .date-after {
+  border-color: tomato tomato transparent transparent;
+  right: 30px;
+}
+section.calendar .cal-box .appear {
+  animation: appear 0.5s ease;
+}
+/* End Calendar Section */
+
 @keyframes bubleToTop {
   0% {
     transform: translate(-50%, -50%);
@@ -133,5 +191,55 @@ section.type-effect h2 {
   100% {
     transform: translate(-50%, 5000%);
     opacity: 0;
+  }
+}
+@keyframes changeCol {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(200px);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes appear {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-200px);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(30px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }

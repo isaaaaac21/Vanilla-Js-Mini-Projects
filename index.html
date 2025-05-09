@@ -20,15 +20,21 @@
         <nav>
           <ul class="mt-25">
             <li class="">
-              <a href="#Mouse" class="c-black pt-15 pb-15">
+              <a href="#Mouse-Effect" class="c-black pt-15 pb-15">
                 <i class="fas fa-solid fa-arrow-pointer txt-c fs-20"></i>
                 <span class="title fw-500 fs-16">Mouse Effect</span>
               </a>
             </li>
             <li class="">
-              <a href="#Calc" class="mb-10 c-black pt-15 pb-15">
+              <a href="#Type-Effect" class="mb-10 c-black pt-15 pb-15">
                 <i class="fa-solid fa-italic txt-c fs-20"></i>
                 <span class="title fw-500 fs-16">Type Effect</span>
+              </a>
+            </li>
+            <li class="">
+              <a href="#Calendar" class="mb-10 c-black pt-15 pb-15">
+                <i class="fa-solid fa-calendar-days txt-c fs-20"></i>
+                <span class="title fw-500 fs-16">Calendar</span>
               </a>
             </li>
           </ul>
@@ -66,15 +72,21 @@
         </section>
 
         <!-- Mini Calendar  -->
-        <section id="Calendar" class="calendar center-flex">
-          <div class="cal-box p-10 rad-10 txt-c">
-            <span class="month-head d-block c-black fw-bold txt-c fs-25"
-              >Month</span
+        <section id="Calendar" class="calendar p-relative">
+          <h2 class="mb-20 txt-c fs-35 c-white">Clickable Calendar</h2>
+          <div class="cal-box ovr-hidden rad-10 txt-c">
+            <span class="month-head d-block fw-bold txt-c fs-30 p-20 c-white"
+              ><span class="appear">Month</span></span
             >
-            <div class="cal-body mt-30">
-              <span class="day-name c-grey mb-20 fw-500 fs-20">Day</span>
-              <span class="day-num d-block c-black fw-bold fs-30">2</span>
-              <span class="year c-grey mb-20 fw-500 fs-20">Year</span>
+
+            <div class="cal-body pt-20 pb-20 p-relative ovr-hidden">
+              <span class="appear day-name d-block c-aaa mb-20 fw-bold fs-25"
+                >Day</span
+              >
+              <span class="day-num d-block mb-20 c-black fw-bold fs-50">2</span>
+              <span class="appear year c-aaa mb-20 fw-bold fs-25">Year</span>
+              <span class="date-before d-block p-absolute"></span>
+              <span class="date-after d-block p-absolute rad-10"></span>
             </div>
           </div>
         </section>
