@@ -37,7 +37,7 @@ ul {
 /* Start SideBar */
 aside {
   position: absolute;
-  min-height: 100vh;
+  height: 100%;
   background-color: var(--secondary-color);
   border-right: 2px solid var(--accent-color);
   transition: 0.3s;
@@ -88,7 +88,20 @@ section.mouse-effect {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-section.mouse-effect i {
+section.mouse-effect {
+}
+section.mouse-effect ul li i {
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+}
+section.mouse-effect ul li i.active {
+  color: var(--primary-color);
+}
+section.mouse-effect ul li i:hover {
+  color: var(--accent-color);
+}
+section.mouse-effect i.selected {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -99,6 +112,7 @@ section.mouse-effect i {
 }
 /* End section mouse effect */
 
+/* Start section Type Effect */
 section.type-effect {
   min-height: 100vh;
   padding-top: 50px;
@@ -109,8 +123,8 @@ section.type-effect h2 {
   font-style: italic;
   font-family: "Permanent Marker", cursive;
 }
-/* Start section Type Effect */
 /* End section Type Effect */
+
 @keyframes bubleToTop {
   0% {
     transform: translate(-50%, -50%);
