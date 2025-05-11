@@ -72,7 +72,6 @@ function updateTitle(){
 
     let n ='' ; 
     if (jobTitleStartWithVowel(jobs[jobIndex])) n = 'n' ; 
-    console.log(jobs[jobIndex][0]) ; 
     
     secSectionTitle.innerHTML =
   `Iam a${n} ${jobs[jobIndex].slice(0,++charIndex)}`; 
@@ -141,3 +140,132 @@ nextDate.addEventListener("click", () =>{
 });
 
 // End calendar section
+
+
+
+
+
+
+
+
+// // Start Weather app Section 
+const weatherApiKey = "521604f5ae32cef2c54c2aff1569e3f8" ; 
+
+//Search-bar
+let searchInput = document.querySelector("section.weather .container form input[type='text']"); 
+let weathSearchClick = document.querySelector("section.weather .container form i.search-click")
+
+
+//Main Containers
+let weathContainer = document.querySelector("section.weather .container") ; 
+let weathMainInfo = document.querySelector("section.weather .container .info");  
+let notFoundDiv = document.querySelector("section.weather .container .not-found"); 
+
+
+// //I need to fetch these datas with the returned response
+let cityName = document.querySelector("section.weather .container  .location-info .location .city-name"); 
+let weatherToday = document.querySelector("section.weather .container  .location-info .date-info .today"); 
+
+
+let weatherStateImg = document.querySelector("section.weather .container .main-weath-info img");
+let weatherState = document.querySelector("section.weather .container .main-weath-info .temp-info .weath-state");
+
+let temperature = document.querySelector("section.weather .container .main-weath-info .temp-info .temp-num")
+let humidityValue = document.querySelector("section.weather .container .sub-weath-info .humidity-info .hum-value");
+let windValue = document.querySelector("section.weather .container .sub-weath-info .wind-info .wind-value");
+
+
+
+let city = 'Blida';
+
+function handleImgBasedOnWeatherCondition(weatherObj){
+    if (weatherObj.weather[0].id >= 200 && weatherObj.weather[0].id <= 232){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/thunderstorm.svg") ; 
+    }
+    else if (weatherObj.weather[0].id >= 300 && weatherObj.weather[0].id <= 321){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/drizzle.svg") ; 
+    }
+    else if (weatherObj.weather[0].id >= 500 && weatherObj.weather[0].id <= 531){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/rain.svg") ; 
+    }
+    else if (weatherObj.weather[0].id >= 600 && weatherObj.weather[0].id <= 622){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/snow.svg") ; 
+    }
+    else if (weatherObj.weather[0].id >= 701 && weatherObj.weather[0].id <= 781){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/atm.svg") ; 
+    }
+    else if (weatherObj.weather[0].id === 800){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/clear.svg") ; 
+    }
+    else if (weatherObj.weather[0].id >= 801 && weatherObj.weather[0].id <= 804){
+        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/clouds.svg") ; 
+    }
+}
+function displayInfo(display){
+    if (display){
+        weathMainInfo.classList.remove("not-opened") ; 
+        notFoundDiv.classList.add("not-opened") ; 
+    }
+    else {
+        notFoundDiv.classList.remove("not-opened") ; 
+        weathMainInfo.classList.add("not-opened") ; 
+    }
+}
+function changeToNotFoundImg(){
+    let notFoundImg =  document.querySelector("section.weather .container .not-found img");
+    notFoundImg.setAttribute("src", "images/weather-sec/message/not-found.png");
+}
+
+function matchData(weather){
+    displayInfo(true) ; 
+
+    cityName.textContent = weather.name + ", " + weather.sys.country; 
+    weatherToday.textContent = new Date().toLocaleDateString("en", {
+        weekday: "long",
+        day: "numeric",
+        month: "short"
+    });
+    humidityValue.textContent = `${weather.main.humidity}%`; 
+    windValue.textContent = `${weather.wind.speed}M/s`; 
+    temperature.textContent = `${parseInt(weather.main.temp)}°C`
+    weatherState.textContent = weather.weather[0].main; 
+    handleImgBasedOnWeatherCondition(weather) ; 
+}
+
+async function HandleWeather(){
+    try{
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`) ; 
+    if(!response.ok)
+    {
+        throw new Error("Error Has Happened") ; 
+    }
+    let weatherData = await response.json() ; 
+    matchData(weatherData) ;  
+    changeToNotFoundImg()  ;
+
+}catch(error){
+         changeToNotFoundImg()  ;
+
+  displayInfo(false) ;
+}
+}
+
+
+
+weathSearchClick.addEventListener("click", ()=>{
+    if (searchInput.value.trim() !== ""){
+        city = searchInput.value.trim() ; 
+        HandleWeather() ; 
+    }
+})
+
+
+
+
+
+
+
+
+
+
+

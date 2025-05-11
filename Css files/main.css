@@ -183,6 +183,105 @@ section.calendar .cal-box .appear {
 }
 /* End Calendar Section */
 
+/* Start Weahter Section */
+section.weather {
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+section.weather::before {
+  content: "";
+  background-image: url("../images/weather-sec/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(5px);
+}
+
+section.weather .container {
+  padding: 30px 20px;
+  width: 350px;
+  overflow: hidden;
+  min-height: 500px;
+}
+section.weather .container .not-found {
+  margin-top: 10px;
+}
+section.weather .container .not-found img {
+  max-width: 250px;
+}
+section.weather .container .not-opened {
+  display: none;
+}
+section.weather .container .container-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(70px);
+  z-index: -1;
+}
+section.weather .container .search-bar {
+}
+section.weather .container .search-bar input[type="text"] {
+  width: 100%;
+  outline: none;
+  background-color: rgba(95, 95, 95, 0.575);
+  border-radius: 20px;
+}
+section.weather .container .search-bar input[type="text"]::placeholder {
+  color: white;
+}
+section.weather .container .search-bar i {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+section.weather .container .search-bar i:hover {
+  color: rgb(199, 198, 198);
+}
+section.weather .container .info .main-weath-info {
+  margin-left: 0;
+}
+section.weather .container .info .main-weath-info img {
+  width: 120px;
+}
+section.weather .container .info .days-info {
+  padding: 20px 0px;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: gold;
+}
+section.weather .container .info .days-info .day {
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.055);
+}
+/* Webkit browsers (Chrome, Safari, New Edge) */
+section.weather .container .info .days-info::-webkit-scrollbar {
+  height: 4px;
+}
+
+section.weather .container .info .days-info::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+section.weather .container .info .days-info::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+section.weather .container .info .days-info::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+/* End Weather Section */
 @keyframes bubleToTop {
   0% {
     transform: translate(-50%, -50%);

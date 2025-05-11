@@ -311,6 +311,9 @@
 .rad-10 {
   border-radius: 10px;
 }
+.rad-20 {
+  border-radius: 20px;
+}
 .rad-half {
   border-radius: 50%;
 }
