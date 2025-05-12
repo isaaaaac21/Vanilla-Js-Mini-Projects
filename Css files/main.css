@@ -26,7 +26,6 @@ html {
 /* End Variables */
 body {
   font-family: "Work Sans", sans-serif;
-  height: 5000px;
   overflow-x: hidden;
 }
 
@@ -248,9 +247,13 @@ section.weather .container .search-bar i {
 section.weather .container .search-bar i:hover {
   color: rgb(199, 198, 198);
 }
+section.weather .container .info .location .city-name {
+  text-align: left;
+}
 section.weather .container .info .main-weath-info {
   margin-left: 0;
 }
+
 section.weather .container .info .main-weath-info img {
   width: 120px;
 }

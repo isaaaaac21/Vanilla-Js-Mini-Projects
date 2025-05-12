@@ -58,7 +58,7 @@ firstSection.addEventListener("mousemove", (e)=>{
 //STart the Type Effect Section
 
 let secSectionTitle = document.querySelector("section.type-effect h2") ; 
-let jobs = ["Web Developer", "Freelancer", "Instructor", "Software Engineer"] ; 
+let jobs = ["Web Developer", "Freelancer", "Instructor", "Software Engineer", "Full-stack developer"] ; 
 let jobIndex = 0 ; 
 let charIndex = 0 ; 
 
@@ -176,30 +176,23 @@ let windValue = document.querySelector("section.weather .container .sub-weath-in
 
 
 
-let city = 'Blida';
+let city = '';
 
-function handleImgBasedOnWeatherCondition(weatherObj){
-    if (weatherObj.weather[0].id >= 200 && weatherObj.weather[0].id <= 232){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/thunderstorm.svg") ; 
+function setWeatherIcon(id, img){
+
+    const imgIcon = {
+        '2' : "./images/weather-sec/weather/thunderstorm.svg",
+        '3' :  "./images/weather-sec/weather/drizzle.svg", 
+        '5': './images/weather-sec/weather/rain.svg',        
+        '6': './images/weather-sec/weather/snow.svg',        
+        '7': './images/weather-sec/weather/atm.svg',         
+        '800': './images/weather-sec/weather/clear.svg',      
+        '8': './images/weather-sec/weather/clouds.svg'  
     }
-    else if (weatherObj.weather[0].id >= 300 && weatherObj.weather[0].id <= 321){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/drizzle.svg") ; 
-    }
-    else if (weatherObj.weather[0].id >= 500 && weatherObj.weather[0].id <= 531){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/rain.svg") ; 
-    }
-    else if (weatherObj.weather[0].id >= 600 && weatherObj.weather[0].id <= 622){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/snow.svg") ; 
-    }
-    else if (weatherObj.weather[0].id >= 701 && weatherObj.weather[0].id <= 781){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/atm.svg") ; 
-    }
-    else if (weatherObj.weather[0].id === 800){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/clear.svg") ; 
-    }
-    else if (weatherObj.weather[0].id >= 801 && weatherObj.weather[0].id <= 804){
-        weatherStateImg.setAttribute("src", "./images/weather-sec/weather/clouds.svg") ; 
-    }
+
+    const firstDigit = Math.floor(id / 100) ; 
+    img.setAttribute("src", imgIcon[id] || imgIcon[firstDigit] ||'./images/weather-sec/weather/clear.svg' );
+
 }
 function displayInfo(display){
     if (display){
@@ -229,37 +222,70 @@ function matchData(weather){
     windValue.textContent = `${weather.wind.speed}M/s`; 
     temperature.textContent = `${parseInt(weather.main.temp)}°C`
     weatherState.textContent = weather.weather[0].main; 
-    handleImgBasedOnWeatherCondition(weather) ; 
+    setWeatherIcon(weather.weather[0].id, weatherStateImg) ; 
 }
+function handleForcastData(forcastData){
+    let forcastDays = forcastData.list.filter(item => item.dt_txt.includes("00:00:00")); 
+
+    let days = document.querySelectorAll("section.weather .container .info .days-info .day") ; 
+
+    days.forEach((day, index) => {
+        if(index < forcastDays.length){
+        day.firstElementChild.textContent = new Date(forcastDays[index].dt_txt).toLocaleDateString("en", {
+            month: "short", 
+            day : "numeric"
+        }) ;
+        setWeatherIcon(forcastDays[index].weather[0].id, day.children[1]) ; 
+        day.lastElementChild.textContent = `${parseInt(forcastDays[index].main.temp)}°C`;
+    }
+    });
+
+
+}
+
 
 async function HandleWeather(){
     try{
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`) ; 
-    if(!response.ok)
+    let [weathResponse, forCastResponse]  = await Promise.all([
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`), 
+    await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weatherApiKey}&units=metric`) ]); 
+
+    if(!weathResponse.ok  || !forCastResponse.ok )
     {
         throw new Error("Error Has Happened") ; 
     }
-    let weatherData = await response.json() ; 
+    let [weatherData, forCastData] = await Promise.all([weathResponse.json(), forCastResponse.json()]); 
+
+    handleForcastData(forCastData) ; 
     matchData(weatherData) ;  
     changeToNotFoundImg()  ;
 
 }catch(error){
+        console.log(error) ; 
          changeToNotFoundImg()  ;
 
   displayInfo(false) ;
 }
 }
 
-
+function initWeatherApp(){
 
 weathSearchClick.addEventListener("click", ()=>{
     if (searchInput.value.trim() !== ""){
         city = searchInput.value.trim() ; 
+
         HandleWeather() ; 
     }
 })
+searchInput.addEventListener("keydown", (e)=>{
+    if (e.key === "Enter"){
+        e.preventDefault() ; 
+        weathSearchClick.click() ; 
+    }
+})
+}
 
-
+initWeatherApp() ; 
 
 
 

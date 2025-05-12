@@ -37,6 +37,12 @@
                 <span class="title fw-500 fs-16">Calendar</span>
               </a>
             </li>
+            <li class="">
+              <a href="#Weather" class="mb-10 c-black pt-15 pb-15">
+                <i class="fa-solid fa-cloud txt-c fs-20"></i>
+                <span class="title fw-500 fs-16">Weather</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </aside>
@@ -63,6 +69,7 @@
           </ul>
         </section>
 
+        <!-- Type Effect -->
         <section
           id="Type-Effect"
           class="type-effect bg-orange p-relative center-flex"
@@ -90,126 +97,142 @@
         </section>
 
         <!-- Weather App -->
-        <section id="Weather" class="weather p-relative center-flex">
-          <div class="container p-relative rad-10 txt-c">
-            <div class="container-overlay"></div>
-            <form class="search-bar p-relative center-flex">
-              <input
-                type="text"
-                name="city-name"
-                id=""
-                class="p-15 bor-none rad-20 c-white"
-                placeholder="Search City"
-              />
-              <i
-                class="search-click fa-solid fa-magnifying-glass fs-20 c-white"
-              ></i>
-            </form>
-            <div class="not-found w-full">
-              <img
-                src="images/weather-sec/message/search-city.png"
-                alt=""
-                class=""
-              />
-              <div class="text mt-25">
-                <h1 class="m-0 mt-5 fs-30 c-white txt-c">Search City</h1>
-                <p class="mt-10 txt-c fs-18 c-white fw-500">
-                  Find out the weather condition of the city
-                </p>
+        <section id="Weather" class="weather p-relative">
+          <h2 class="c-white fs-35 txt-c m-0">Weather App</h2>
+          <div class="center-flex w-full h-full mt-25">
+            <div class="container p-relative rad-10 txt-c">
+              <div class="container-overlay"></div>
+              <form class="search-bar p-relative center-flex">
+                <input
+                  type="text"
+                  name="city-name"
+                  id=""
+                  class="p-15 bor-none rad-20 c-white"
+                  placeholder="Search City"
+                />
+                <i
+                  class="search-click fa-solid fa-magnifying-glass fs-20 c-white"
+                ></i>
+              </form>
+              <div class="not-found w-full">
+                <img
+                  src="images/weather-sec/message/search-city.png"
+                  alt=""
+                  class=""
+                />
+                <div class="text mt-25">
+                  <h1 class="m-0 mt-5 fs-30 c-white txt-c">Search City</h1>
+                  <p class="mt-10 txt-c fs-18 c-white fw-500">
+                    Find out the weather condition of the city
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="info not-opened mt-25">
-              <div class="location-info between-flex">
-                <div class="location">
-                  <i class="fa-solid fa-location-dot fs-20 c-white"></i>
-                  <span class="city-name ml-5 fw-500 c-white"></span>
+              <div class="info not-opened mt-25">
+                <div class="location-info between-flex">
+                  <div class="location between-flex gap-10">
+                    <i class="fa-solid fa-location-dot fs-20 c-white"></i>
+                    <span class="city-name ml-5 fw-500 c-white"></span>
+                  </div>
+                  <div class="date-info">
+                    <span class="today c-white fw-500"></span>
+                  </div>
                 </div>
-                <div class="date-info">
-                  <span class="today c-white fw-500"></span>
-                </div>
-              </div>
-              <div class="main-weath-info between-flex mt-25">
-                <img src="images/weather-sec/weather/clear.svg" alt="" />
-                <div class="temp-info txt-c c-white">
-                  <span class="temp-num d-block fs-25 fw-bold">17 C</span>
-                  <span class="weath-state d-block mt-5 fw-500 fs-18"
-                    >Clear</span
-                  >
-                </div>
-              </div>
-              <div class="sub-weath-info between-flex mt-25">
-                <div class="humidity-info center-flex">
-                  <i class="fa-solid fa-droplet fs-20 c-white"></i>
-                  <div class="humidity ml-10">
-                    <span class="d-block c-white fw-500">Humidity</span>
-                    <span class="hum-value d-block c-white fw-500 mt-5"
-                      >70%</span
+                <div class="main-weath-info between-flex mt-25">
+                  <img src="images/weather-sec/weather/clear.svg" alt="" />
+                  <div class="temp-info txt-c c-white">
+                    <span class="temp-num d-block fs-25 fw-bold">17 C</span>
+                    <span class="weath-state d-block mt-5 fw-500 fs-18"
+                      >Clear</span
                     >
                   </div>
                 </div>
-                <div class="wind-info center-flex">
-                  <i class="fa-solid fa-wind fs-20 c-white"></i>
-                  <div class="wind ml-10">
-                    <span class="d-block c-white fw-500">Wind Speed</span>
-                    <span class="wind-value d-block c-white fw-500 mt-5 txt-c"
-                      >1.7M/S</span
-                    >
+                <div class="sub-weath-info between-flex mt-25">
+                  <div class="humidity-info center-flex">
+                    <i class="fa-solid fa-droplet fs-20 c-white"></i>
+                    <div class="humidity ml-10">
+                      <span class="d-block c-white fw-500">Humidity</span>
+                      <span class="hum-value d-block c-white fw-500 mt-5"
+                        >70%</span
+                      >
+                    </div>
+                  </div>
+                  <div class="wind-info center-flex">
+                    <i class="fa-solid fa-wind fs-20 c-white"></i>
+                    <div class="wind ml-10">
+                      <span class="d-block c-white fw-500">Wind Speed</span>
+                      <span class="wind-value d-block c-white fw-500 mt-5 txt-c"
+                        >1.7M/S</span
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="days-info d-flex gap-20">
-                <div class="day p-10 rad-6 txt-c">
-                  <span class="day-date d-block c-white fs-15 fw-500"
-                    >May 11</span
-                  >
-                  <img
-                    class="m-w-50 mt-5"
-                    src="images/weather-sec/weather/atm.svg"
-                    alt=""
-                  />
-                  <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
-                    >24 C</span
-                  >
-                </div>
-                <div class="day p-10 rad-6 txt-c">
-                  <span class="day-date d-block c-white fs-15 fw-500"
-                    >May 11</span
-                  >
-                  <img
-                    class="m-w-50 mt-5"
-                    src="images/weather-sec/weather/atm.svg"
-                    alt=""
-                  />
-                  <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
-                    >24 C</span
-                  >
-                </div>
-                <div class="day p-10 rad-6 txt-c">
-                  <span class="day-date d-block c-white fs-15 fw-500"
-                    >May 11</span
-                  >
-                  <img
-                    class="m-w-50 mt-5"
-                    src="images/weather-sec/weather/atm.svg"
-                    alt=""
-                  />
-                  <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
-                    >24 C</span
-                  >
-                </div>
-                <div class="day p-10 rad-6 txt-c">
-                  <span class="day-date d-block c-white fs-15 fw-500"
-                    >May 11</span
-                  >
-                  <img
-                    class="m-w-50 mt-5"
-                    src="images/weather-sec/weather/atm.svg"
-                    alt=""
-                  />
-                  <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
-                    >24 C</span
-                  >
+                <div class="days-info d-flex gap-20">
+                  <div class="day p-10 rad-6 txt-c">
+                    <span class="day-date d-block c-white fs-15 fw-500"
+                      >May 12</span
+                    >
+                    <img
+                      class="m-w-50 mt-5"
+                      src="images/weather-sec/weather/atm.svg"
+                      alt=""
+                    />
+                    <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
+                      >24 C</span
+                    >
+                  </div>
+                  <div class="day p-10 rad-6 txt-c">
+                    <span class="day-date d-block c-white fs-15 fw-500"
+                      >May 13</span
+                    >
+                    <img
+                      class="m-w-50 mt-5"
+                      src="images/weather-sec/weather/atm.svg"
+                      alt=""
+                    />
+                    <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
+                      >24 C</span
+                    >
+                  </div>
+                  <div class="day p-10 rad-6 txt-c">
+                    <span class="day-date d-block c-white fs-15 fw-500"
+                      >May 14</span
+                    >
+                    <img
+                      class="m-w-50 mt-5"
+                      src="images/weather-sec/weather/atm.svg"
+                      alt=""
+                    />
+                    <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
+                      >24 C</span
+                    >
+                  </div>
+                  <div class="day p-10 rad-6 txt-c">
+                    <span class="day-date d-block c-white fs-15 fw-500"
+                      >May 15</span
+                    >
+                    <img
+                      class="m-w-50 mt-5"
+                      src="images/weather-sec/weather/atm.svg"
+                      alt=""
+                    />
+                    <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
+                      >24 C</span
+                    >
+                  </div>
+                  <div class="day p-10 rad-6 txt-c">
+                    <span class="day-date d-block c-white fs-15 fw-500"
+                      >May 12</span
+                    >
+                    <img
+                      class="m-w-50 mt-5"
+                      src="images/weather-sec/weather/atm.svg"
+                      alt=""
+                    />
+                    <span class="day-temp d-block c-white fs-15 fw-500 mt-5"
+                      >24 C</span
+                    >
+                  </div>
                 </div>
               </div>
             </div>
